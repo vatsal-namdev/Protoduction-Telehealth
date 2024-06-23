@@ -1,0 +1,259 @@
+{% load static %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from mizzle.webestica.com/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 May 2024 11:06:25 GMT -->
+<head>
+
+	<title>Motherly - Embracing motherhood</title>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Webestica.com">
+	<meta name="description" content="Technology and Corporate Bootstrap Theme">
+
+	<!-- Dark mode -->
+	<script>
+		const storedTheme = localStorage.getItem('theme')
+ 
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'light'
+		}
+
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
+
+		setTheme(getPreferredTheme())
+
+		window.addEventListener('DOMContentLoaded', () => {
+		    var el = document.querySelector('.theme-icon-active');
+			if(el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+				const activeThemeIcon = document.querySelector('.theme-icon-active use')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+					element.classList.remove('active')
+				})
+
+				btnToActive.classList.add('active')
+				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+					setTheme(getPreferredTheme())
+				}
+			})
+
+			showActiveTheme(getPreferredTheme())
+
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						localStorage.setItem('theme', theme)
+						setTheme(theme)
+						showActiveTheme(theme)
+					})
+				})
+
+			}
+		})
+		
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{% static './assets/images/logo.png' %}">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static './vendor/font-awesome/css/all.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './vendor/bootstrap-icons/bootstrap-icons.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './vendor/swiper/swiper-bundle.min.css' %}">
+	
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static './css/style2.css' %}">
+
+</head>
+
+<body>
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+		<div class="row g-0">
+			<!-- left -->
+			<div class="col-lg-7 vh-100 d-none d-lg-block">
+				<!-- Slider START -->
+				<div class="swiper h-100" data-swiper-options='{
+					"pagination":{
+						"el":".swiper-pagination",
+						"clickable":"true"
+					}}'>
+					<div class="swiper-wrapper">
+						<!-- Item -->
+						<div class="swiper-slide">
+							<div class="card rounded-0 h-100" data-bs-theme="dark" style="background-image:url(https://parade.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_700/MTk2MzcyMTI0NDIyNjQ1Njk5/motherhood-quotes.webp); background-position: center left; background-size: cover;">
+								<!-- Bg overlay -->
+								<div class="bg-overlay bg-dark opacity-5"></div>
+
+								<!-- Card info -->
+								<div class="card-img-overlay z-index-2 p-7">
+									<div class="d-flex flex-column justify-content-end h-100">
+										<!-- Quote -->
+										<h4 class="fw-light">"It's a funny thing about mothers... Even when their own child is the most disgusting little blister you could ever imagine, they still think that he or she is wonderful."</h4>
+										<!-- Info -->
+										<div class="d-flex justify-content-between mt-5">
+											<div>
+												<h5 class="mb-0">Roald Dahl</h5>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Item -->
+						<div class="swiper-slide">
+							<div class="card rounded-0 h-100" data-bs-theme="dark" style="background-image:url(https://faciallounge.com/cdn/shop/articles/Mother_kissing_baby_boy_on_the_cheek.jpg?v=1677442203); background-position: center left; background-size: cover;">
+								<!-- Bg overlay -->
+								<div class="bg-overlay bg-dark opacity-5"></div>
+
+								<!-- Card info -->
+								<div class="card-img-overlay z-index-2 p-7">
+									<div class="d-flex flex-column justify-content-end h-100">
+										<!-- Quote -->
+										<h4 class="fw-light">“Can anything harm us, mother, after the night-lights are lit?Nothing, precious,she said;they are the eyes a mother leaves behind her to guard her children.”</h4>
+										<!-- Info -->
+										<div class="d-flex justify-content-between mt-5">
+											<div>
+												<h5 class="mb-0">J. M. Barrie</h5>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Item -->
+						<div class="swiper-slide">
+							<div class="card rounded-0 h-100" data-bs-theme="dark" style="background-image:url(https://parade.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MjAxMTE3ODIzNTcxODYzNDE3/mother-and-son-quotes.jpg); background-position: center left; background-size: cover;">
+								<!-- Bg overlay -->
+								<div class="bg-overlay bg-dark opacity-5"></div>
+
+								<!-- Card info -->
+								<div class="card-img-overlay z-index-2 p-7">
+									<div class="d-flex flex-column justify-content-end h-100">
+										<!-- Quote -->
+										<h4 class="fw-light">“When a man who is drinking neat gin starts talking about his mother he is past all argument.”</h4>
+										<!-- Info -->
+										<div class="d-flex justify-content-between mt-5">
+											<div>
+												<h5 class="mb-0">C. S. Forester</h5>
+											</div>
+											<!-- Rating star -->
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					
+					<!-- Slider Pagination -->
+					<div class="swiper-pagination swiper-pagination-line mb-3"></div>
+				</div>
+			</div>
+
+			
+
+			<!-- Right -->
+			<div class="col-sm-10 col-lg-5 d-flex m-auto vh-100">
+				<div class="row w-100 m-auto">
+					<div class="col-sm-10 my-5 m-auto">
+
+						<a href="#"><img src="{% static './image/mlogo.png' %}" class="h-50px mb-4" alt="logo"></a>
+
+						<h2 class="mb-0">Welcome back</h2>
+						<p class="mb-0">Welcome back, please enter your detail</p>
+					
+						<!-- Form START -->
+						<form method="post" action="login">
+							{% csrf_token %}
+							<!-- Email -->
+							<div class="input-floating-label form-floating mb-4 mt-3">
+								<input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username">
+								<label for="floatingInput">Username</label>
+							</div>
+
+							<!-- Password -->
+							<div class="input-floating-label form-floating mb-4 position-relative">
+								<input type="password" class="form-control fakepassword pe-6" id="psw-input" name="password" placeholder="Enter your password">
+								<label for="floatingInput">Password</label>
+								<span class="position-absolute top-50 end-0 translate-middle-y p-0 me-2">
+									<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
+								</span>
+							</div>
+
+							<div class="m-3">
+								{% for message in messages %}
+								<p>{{message}}</p>
+								{% endfor %}
+							</div>
+
+							<!-- Button -->
+							<div class="align-items-center mt-0">
+								<div class="d-grid">
+									<input type="submit" value="Login" class="btn btn-dark">
+								</div>
+							</div>
+						</form>
+						<!-- Form END -->
+
+						<!-- Sign up link -->
+						<div class="mt-4 text-center">
+							<span>Not registered yet?<a href="register"> Create an account</a></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- Back to top -->
+<div class="back-top"></div>
+
+<!-- Bootstrap JS -->
+<script src="{% static './vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+
+<!--Vendors-->
+<script src="{% static './vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+<!-- Theme Functions -->
+<script src="{% static './js/functions.js' %}"></script>
+
+</body>
+
+<!-- Mirrored from mizzle.webestica.com/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 May 2024 11:06:25 GMT -->
+</html>
