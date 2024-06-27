@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 shadow p-5 rounded">
+                    <h3 class="text-center mb-4">Your Plan Information</h3>
+                    <div class="card p-3">
+                        <h5 class="card-title">Plan Details</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Plan Name: {{ plan.name }}</li>
+                            <li class="list-group-item">Plan Description: {{ plan.description }}</li>
+                            <li class="list-group-item">Plan Price: {{ plan.price }}</li>
+                            <li class="list-group-item">Plan Duration: {{ plan.duration }} days</li>
+                        </ul>
+                    </div>
+                    <hr class="my-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="mb-0">Total Amount: {{ plan.price }}</h5>
+                        <form id="payment_form" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="plan_id" value="{{ plan.id }}">
+                            <button type="button" id="pay_now" class="btn btn-primary">Pay Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    document.getElementById('pay_now').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        var planId = document.querySelector('input[name="plan_id"]').value;
+
+        fetch('{% url "payment_process" %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': '{{ csrf_token }}',
+            },
+            body: new URLSearchParams({
+                'plan_id': planId,
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                var options = {
+                    "key": data.key_id,
+                    "amount": data.amount,
+                    "currency": "INR",
+                    "name": data.name,
+                    "description": "Payment for your plan",
+                    "order_id": data.order_id,
+                    "handler": function (response) {
+                        alert('Payment successful!');
+                        // Optionally redirect to success page or process order
+                    },
+                    "prefill": data.prefill,
+                    "theme": {
+                        "color": "#333333",
+                        "hover_color": "#007bff"
+                    }
+                };
+                var rzp = new Razorpay(options);
+                rzp.open();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
+{% endblock content %}

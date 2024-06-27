@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+ 
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+<body>
+
+    {% block content %}
+
+    <!-- ****** MAIN CONTENT START ****** -->
+    <main>
+
+        <!-- =======================
+Main hero START -->
+        <section class="pt-xl-8">
+            <div class="container">
+                <div class="row g-4 g-xxl-5">
+                    <div class="col-xl-9 mx-auto">
+                        <!-- Image -->
+                        <img src="{% static './assets/images/bg/02.jpg' %}" class="rounded" alt="contact-bg">
+
+                        <!-- Contact form START -->
+                        <div class="row mt-n5 mt-sm-n7 mt-md-n8">
+                            <div class="col-11 col-lg-11 mx-auto">
+                                <div class="card shadow p-4 p-sm-5 p-md-6">
+                                    <!-- Card header -->
+                                    <div class="card-header border-bottom px-0 pt-0 pb-5">
+                                        <!-- Breadcrumb -->
+                                        <nav class="mb-3" aria-label="breadcrumb">
+                                            <ol class="breadcrumb breadcrumb-dots pt-0">
+                                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                                <li class="breadcrumb-item active" aria-current="page">Screening</li>
+                                            </ol>
+                                        </nav>
+                                        <!-- Title -->
+                                        <h1 class="mb-3 h3">Telehealth Consultation Request</h1>
+                                        
+                                    </div>
+                                    <!-- Card body & form -->
+                                    <div >
+                                        <form class="card-body px-0 pb-0 pt-5" action="score_result", method="POST" >
+                                            {% csrf_token %}
+                                            <div class="form-group mb-3">
+                                                <label for="name">Full Name:</label>
+                                                <input type="text" class="form-control" id="name" name="full_name" required>
+                                            </div>
+    
+                                            <!-- Button -->
+    
+                                            <div class="mb-3">
+                                                <label for="dob">Date of Birth:</label>
+                                                <input type="date" class="form-control" id="dob" name="dob" required>
+                                              </div>
+                                              
+                                              <div class="mb-3">
+                                                <label for="phone">Phone Number:</label>
+                                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                                              </div>
+                                              
+                                              <div class="mb-3">
+                                                <label for="specialty">Select a Specialty:</label>
+                                                <select class="form-control" id="specialty" name="specialty" required>
+                                                  <option value="">-- Please Select --</option>
+                                                  <option value="Dermatology">Dermatology</option>
+                                                  <option value="Cardiology">Cardiology</option>
+                                                  <option value="Neurology">Neurology</option>
+                                                  <option value="Pediatrics">Pediatrics</option>
+                                                  <option value="Oncology">Oncology</option>
+                                                  <option value="Ophthalmology">Ophthalmology</option>
+                                                  <option value="other">Other (Specify)</option>
+                                                </select>
+                                              </div>
+                                              
+                                              <div class="mb-3">
+                                                <label for="reason">Reason for Consultation (Optional):</label>
+                                                <textarea class="form-control" id="reason" name="reason" rows="4"></textarea>
+                                              </div>
+                                              
+                                            <!-- Button -->
+                                            <button class="btn btn-lg btn-primary mb-0">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Contact form END -->
+                    </div>
+                </div> <!-- Row END -->
+            </div>
+        </section>
+        <!-- =======================
+Main hero END -->
+
+    </main>
+    <!-- ****** MAIN CONTENT END ****** -->
+
+    {% endblock content %}
+
+    <!-- Back to top -->
+    <div class="back-top"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="{% static './assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Theme Functions -->
+    <script src="{% static './assets/js/functions.js' %}"></script>
+
+</body>

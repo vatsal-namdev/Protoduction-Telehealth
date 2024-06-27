@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "core",
     "django_bootstrap5",
     "ckeditor",
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'Telehealth.urls'
@@ -66,6 +68,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -83,6 +87,11 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 
 # Password validation
@@ -126,3 +135,25 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '132887266604-odrqe94a1e909qhm8nf389c32ahvptsb.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'http://localhost:8000/complete/google-oauth2/'
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = '/'
+
+
+RAZORPAY_KEY_ID = 'YOUR_RAZORPAY_KEY_ID'
+RAZORPAY_SECRET = 'YOUR_RAZORPAY_SECRET'
+
+SQUARE_APPLICATION_ID = 'sandbox-sq0idb-2MXQHf0fatNUbbJ4VVtqYQ'
+SQUARE_ACCESS_TOKEN = 'EAAAl4TyAqd-iBhkoVq26PyMS-3Bai12CL2w2mRP48MyrGBgs1ra4tIVokDC-3wN'
+SQUARE_LOCATION_ID = 'main'
+
+
+

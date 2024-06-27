@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+ <section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 shadow p-3" style="text-align: center;">
+                <h5>Hey, {{user}}</h5>
+                <p>Talk to your doctor, Don't hide anything from your doctor.</p>
+                <form action="genroom" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="username" id="username" value="{{user}}">
+                    <input type="submit" class="btn btn-info" value="Join Chat">
+                </form>
+            </div>
+        </div>
+    </div>
+ </section>
+
+{% endblock content %}

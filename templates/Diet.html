@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+  
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block content %}
+<section>
+  <div style="text-align: center;">
+  <img src="https://th.bing.com/th/id/OIP.pWj6s_8oBWOOFr10tRKzSgHaE8?rs=1&pid=ImgDetMain" alt="" height="200px" width="200px" style="border: 2px solid rgb(5, 168, 5); border-radius: 4px;">
+
+  </div>
+  <h1 style=" text-align: center;">Check your Daily Diet Nutritions</h1>
+  <hr>
+<div class="container-fluid">
+    <div class="row justify-content-center" style="text-align: center; font-size: medium;">
+        <div class="col-8 border shadow p-4 m-4">
+            <form action="dietres" method="POST">
+                {% csrf_token %}
+                
+                  <div class="form-group">
+                    <label for="pwd">Enter your meal:</label>
+                    <input type="text" class="form-control" id="pwd" name="query">
+                  </div>
+                  <br><br>
+                  <button type="submit" class="btn btn-info">Submit</button>
+            </form>
+        </div>
+    </div>
+  </div>
+</section>
+
+  {% endblock content %}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+    .comment {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .comment .author {
+        font-weight: bold;
+    }
+
+    .comment .timestamp {
+        font-style: italic;
+        font-size: 12px;
+        color: #666;
+    }
+
+    .comment .body {
+        margin-top: 5px;
+    }
+
+    .comment-form {
+        margin-top: 20px;
+    }
+</style>
+<script>
+$(document).ready(function(){
+    $("#post-form").submit(function(event){
+        // Prevent default form submission
+        event.preventDefault();
+        
+        // Serialize form data
+        var formData = $(this).serialize();
+        
+        // Send AJAX request
+        $.ajax({
+            type: "POST",
+            url: "{% url 'csave' %}",
+            data: formData,
+            success: function(response){
+                // Assuming response contains the new comment HTML, update the comments section
+                $("#comments-section").append(response);
+                
+                // Clear the comment input field
+                $("#body").val('');
+            },
+            error: function(xhr, status, error){
+                console.error(xhr.responseText);
+            }
+        });
+    });
+});
+</script>
+<section class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{queries.name}}</h3>
+            <h6 class="card-subtitle mb-2 text-muted">{{queries.created}}</h6>
+            <p class="card-text">{{queries.body}}</p>
+            
+        </div>
+    </div>
+    <h4 class="mt-4">Comments...</h4>
+    <div id="comments-section">
+        {% for c in com %}
+            <div class="comment">
+                <div class="author">{{c.name}}</div>
+                <div class="timestamp">{{c.date_added}}</div>
+                <div class="body">{{c.body}}</div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="comment-form">
+        <form id="post-form" method="POST" action="{% url 'csave' %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="text" name="body" id="body" class="form-control" placeholder="Write a comment...">
+                <input type="hidden" name="username" id="username" value="{{username}}">
+                <input type="hidden" name="queryn" id="queryn" value="{{queryn}}">
+                <button type="submit" class="btn btn-secondary">Comment</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock content %}

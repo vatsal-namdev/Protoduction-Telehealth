@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+  {% block content %}
+<section>
+  <h3 style="text-align: center;">Results:</h3>
+  <div class="container-fluid">
+    <div class="row justify-content-center" style="font-size: medium;">
+        <div class="col-10 shadow p-5" style="text-align: center;">
+            <p>Your data is ready!!!</p>
+            <table class="table">
+              <tbody>
+                  {% for key, value in res.items %}
+                  <tr>
+                      <th scope="row">{{ key }}</th>
+                      <td>{{ value }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+          <br>
+          <br>
+          <h2 style="color: aquamarine;">{{wrn}}</h2>
+        </div>
+    </div>
+  </div>
+</section>
+  {% endblock content %}

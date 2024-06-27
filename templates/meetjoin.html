@@ -1,0 +1,26 @@
+{% load static %}
+
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motherly - Embracing motherhood</title>
+    <link rel="shortcut icon" href="{% static './assets/images/logo.png' %}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col " style="margin-top: 20%; margin-left: 12%; text-align: center;">
+                <h1>Your Appointment is successfully booked by Motherly!!</h1>
+                <p>To join the meeting click here -</p>
+                <br>
+                <a href="http://127.0.0.1:8000/meeting?roomID={{code}}" class="btn btn-primary">Join Now</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+<body>
+
+	{% block content %}
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+<!-- =======================
+Blog detail START -->
+<section class="pt-8 pt-xl-9">
+	<div class="container">
+		<div class="row g-4 g-lg-6">
+
+			<!-- Title and author -->
+			<div class="col-lg-8 mx-auto text-center">
+				
+				<h1 class="h2 mb-0">{{bpost.title}}</h1>
+
+				<!-- Author and actions -->
+				<div class="d-sm-flex justify-content-center justify-content-sm-between align-items-center text-start mt-5">
+					<!-- Avatar -->
+					<div class="d-flex justify-content-center align-items-center mb-5 mb-sm-0">
+						<div class="avatar flex-shrink-0">
+							<img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt="avatar">
+						</div>
+						<!-- Info -->
+						<div class="ms-2">
+							<h6 class="mb-0"><a href="#">{{bpost.user}}</a></h6>
+							<small>1 day ago</small>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Image -->
+			<div class="col-lg-10 mx-auto text-center">
+				<img src="{{bpost.post_img.url}}" class="img-fluid rounded" alt="blog-img">
+			</div>
+
+			<!-- Content -->
+			<div class="col-lg-8 mx-auto">
+				<p>{{bpost.body|safe}}</p>
+			</div>
+
+		</div> <!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Blog detail END -->
+
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+{% endblock content %}
+
+<!-- Back to top -->
+<div class="back-top"></div>
+
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!--Vendors-->
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.js"></script>
+
+<!-- Theme Functions -->
+<script src="assets/js/functions.js"></script>
+
+</body>

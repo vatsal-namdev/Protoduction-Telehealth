@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<body>
+    {% block content %}
+    <!-- **************** MAIN CONTENT START **************** -->
+    <main>
+        <!-- =======================
+        Main hero START -->
+        <section class="pt-xl-8">
+            <div class="container">
+                <div class="row g-4 g-xxl-5">
+                    <div class="col-xl-9 mx-auto">
+                        <!-- Image -->
+                        <img src="{% static 'assets/images/bg/02.jpg' %}" class="rounded" alt="contact-bg">
+                        
+                        <!-- Contact form START -->
+                        <div class="row mt-n5 mt-sm-n7 mt-md-n8">
+                            <div class="col-11 col-lg-11 mx-auto">
+                                <div class="card shadow p-4 p-sm-5 p-md-6">
+                                    <!-- Card header -->
+                                    <div class="card-header px-0 pt-0 pb-5">
+                                        <!-- Breadcrumb -->
+                                        <nav class="mb-3" aria-label="breadcrumb">
+                                            <ol class="breadcrumb breadcrumb-dots pt-0">
+                                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                                <li class="breadcrumb-item active" aria-current="page">Community</li>
+                                            </ol>
+                                        </nav>
+                                        <a href="{% url 'addquery' %}">
+                                            <button type="submit" class="btn btn-primary">Add post</button>
+                                        </a>
+                                    </div>
+                                    <!-- Card body & form -->
+                                    {% for pq in queries reversed %}
+                                    <div class="mt-2 card border gedf-card">
+                                        <div class="card-header">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="mr-2">
+                                                        <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                                                    </div>
+                                                    <div class="ml-2">
+                                                        <div class="h5 m-1">{{ pq.name }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="text-muted h7 mb-2">
+                                                <i class="fa fa-clock-o"></i> {{ pq.created }}
+                                            </div>
+                                            <p class="card-text">
+                                                {{ pq.body }}
+                                            </p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <a href="#" class="card-link"><i class="bi bi-hand-thumbs-up"></i> Like</a>
+                                            <a href="{% url 'pcomment' pq.id %}" class="card-link"><i class="bi bi-chat-dots"></i> Comment</a>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Contact form END -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =======================
+        Main hero END -->
+    </main>
+    <!-- **************** MAIN CONTENT END **************** -->
+    {% endblock content %}
+
+    <!-- Back to top -->
+    <div class="back-top"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Theme Functions -->
+    <script src="{% static 'assets/js/functions.js' %}"></script>
+</body>
