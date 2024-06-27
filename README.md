@@ -50,7 +50,10 @@ Explore the web app, featuring multiple features for a user from the comfort of 
 ### Explanatory Video - 
   https://drive.google.com/file/d/12CVvKdAhCynDqcTDvFjCvIkPAkJ-td-j/view?usp=sharing 
 
-Do not forget to add your credentials for Google Auth and Razorpay.
+### Example Proto-type -
+   https://www.figma.com/proto/cUM0H0JBwJiSGmr1xRYk3x/Untitled?node-id=0-1&t=zfZuDW4acR19chvu-1 
+
+Please don't forget to add your credentials for Google Auth and Razorpay.
 
 ## -Protoduction
 
