@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import decouple
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-cn0^glpm@ct7jk1$$ffqfspfg2$qvw7iqg7zo3!2_b#^1tue)v'
+SECRET_KEY = decouple.config("SECRET_KEY")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -139,8 +142,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '132887266604-odrqe94a1e909qhm8nf389c32ahvptsb.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = decouple.config("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = decouple.config("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
 SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'http://localhost:8000/complete/google-oauth2/'
 
 LOGIN_URL = 'login'
@@ -148,8 +151,8 @@ LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = '/'
 
 
-RAZORPAY_KEY_ID = 'YOUR_RAZORPAY_KEY_ID'
-RAZORPAY_SECRET = 'YOUR_RAZORPAY_SECRET'
+RAZORPAY_KEY_ID = decouple.config("RAZORPAY_KEY_ID")
+RAZORPAY_SECRET = decouple.config("RAZORPAY_SECRET")
 
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_HSTS_SECONDS = 0
