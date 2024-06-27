@@ -21,7 +21,7 @@ Describe your web application briefly here. Mention its main features and target
 
 ## Installation and Setup
 1. **Clone the repository:**
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://github.com/vatsal-namdev/Protoduction-Telehealth.git
     cd repo_name
 
 2. **Setup Virtual Environment:**
