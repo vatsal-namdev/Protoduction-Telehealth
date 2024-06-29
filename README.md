@@ -53,6 +53,8 @@ Explore the web app, featuring multiple features for a user from the comfort of 
 ### Example Proto-type -
    https://www.figma.com/proto/cUM0H0JBwJiSGmr1xRYk3x/Untitled?node-id=0-1&t=zfZuDW4acR19chvu-1 
 
+** Link to the web app ** - http://51.20.37.77/
+
 Please don't forget to add your credentials for Google Auth and Razorpay.
 
 ## -Protoduction
